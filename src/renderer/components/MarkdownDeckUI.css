@@ -1,0 +1,14 @@
+.markdownDeck {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.editorArea {
+  margin-right: 8px;
+}
+
+.previewArea {
+  padding-left: 8px;
+}

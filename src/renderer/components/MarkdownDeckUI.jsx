@@ -13,7 +13,7 @@ export default class MarkdownDeckUI extends React.Component {
   }
 
   onChangeText(e) {
-    this.setState({ text: e.target.value })
+    this.setState({ text: e })
   }
 
   render() {
@@ -22,7 +22,7 @@ export default class MarkdownDeckUI extends React.Component {
         <Editor
           className={style.editorArea}
           value={this.state.text}
-          onChange={this.onChangeText}
+          edit={this.onChangeText}
         />
         <Previewer
           className={style.previewArea}

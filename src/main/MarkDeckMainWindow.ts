@@ -2,8 +2,12 @@ import {
   BrowserWindow,
   ipcMain
 } from "electron";
+import MainWindow from "./MainWindow";
 
-class MainWindow {
+class MarkDeckMainWindow implements MainWindow {
+
+  private window: any;
+
   constructor() {
     this.window = new BrowserWindow({
       width: 800,
@@ -16,20 +20,22 @@ class MainWindow {
     });
   }
 
-  requestText() {
+  /**
+   * rendererプロセスにテキストを送信する
+   * 
+   * @returns {Promise<string>} 
+   * @memberof MainWindow
+   */
+  requestText(): Promise<string> {
     return new Promise((resolve) => {
       this.window.webContents.send("REQUEST_TEXT");
-      ipcMain.once("REPLY_TEXT", (_e, text) => resolve(text));
+      ipcMain.once("REPLY_TEXT", (e: any, text: string) => resolve(text));
     })
   }
 
-  sendText(text) {
+  sendText(text: string): void {
     this.window.webContents.send("SEND_TEXT", text);
   }
 }
 
-function createMainWindow() {
-  return new MainWindow();
-}
-
-export default createMainWindow;
+export default MarkDeckMainWindow;

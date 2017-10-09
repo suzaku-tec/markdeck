@@ -5,7 +5,7 @@
   "main": "dist/main/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "tsc && webpack && gulp clean",
     "watch": "webpack --watch",
     "start": "electron .",
     "": "gulp build"
@@ -21,6 +21,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
+    "del": "^3.0.0",
     "electron": "^1.7.8",
     "gulp": "^3.9.1",
     "gulp-typescript": "^3.2.2",

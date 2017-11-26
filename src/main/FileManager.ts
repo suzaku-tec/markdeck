@@ -11,7 +11,9 @@ class FileManager {
   }
 
   static getInstance(): FileManager {
-    return this.instance || new FileManager();
+    console.log("[FileManager$getInstance] instance", this.instance);
+    this.instance = this.instance || new FileManager();
+    return this.instance;
   }
 
   saveFile(filePath: string, text: string) {
@@ -26,6 +28,7 @@ class FileManager {
     return new Promise((resolve) => {
       const text = fs.readFileSync(filePath, "utf8");
       this.filePath = filePath;
+      console.log("[FileManager$readFile]filePath", filePath);
       resolve(text);
     });
   }

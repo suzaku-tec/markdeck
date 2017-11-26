@@ -34,6 +34,7 @@ class MarkDeckMenu {
         label: "Save",
         accelerator: "CmdOrCtrl+S",
         click: () => {
+          console.log("CurrentFilePath:", FileManager.getInstance().getCurrentFilePath());
           if (!FileManager.getInstance().getCurrentFilePath()) {
             saveAsNewFile();
             return;
